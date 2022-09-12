@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">claps-app</string>
+    <string name="title_activity_main">claps-app</string>
+    <string name="package_name">com.clapsApp.app</string>
+    <string name="custom_url_scheme">com.clapsApp.app</string>
+</resources>
