@@ -5,7 +5,7 @@
     <span class="example-spacer"></span>
     <button mat-button [matMenuTriggerFor]="menu">Cards</button>
     <mat-menu id="cardsDropDown" #menu="matMenu">
-      <button mat-menu-item *ngFor="let but of data">{{  }}</button>
+      <button mat-menu-item *ngFor="let but of data">{{ but }}</button>
     </mat-menu>
 
   </mat-toolbar>
