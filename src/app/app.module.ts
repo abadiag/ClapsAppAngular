@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { FaderComponent } from './components/fader/fader.component';
 import { FaderDirective } from './directives/fader.directive';
 import { DashComponent } from './components/dash/dash.component'
