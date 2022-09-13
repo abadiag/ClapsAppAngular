@@ -33,7 +33,7 @@ export class FaderDirective implements OnInit {
   @HostListener('mouseleave', ['$event'])
   onMouseLeave(e: MouseEvent) {
     this.isMouseHover = false;
-    //this.isMouseDown = false;
+    this.isMouseDown = false;
     //this.mouseDownPosition = e.clientY;
   }
 
