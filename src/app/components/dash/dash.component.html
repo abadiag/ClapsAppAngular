@@ -7,7 +7,6 @@
     <mat-menu id="cardsDropDown" #menu="matMenu">
       <button mat-menu-item *ngFor="let but of data">{{ but }}</button>
     </mat-menu>
-
   </mat-toolbar>
 
   <mat-grid-list cols="2" rowHeight="350px">
@@ -26,7 +25,8 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <div>Card Content Here</div>
+          <div class="col" *ngIf="IsText(card.id)">Is text</div>
+          <div [innerHTML]="card.content"></div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

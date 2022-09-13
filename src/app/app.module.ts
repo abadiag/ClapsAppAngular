@@ -21,6 +21,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { CardviewComponent } from './components/cardview/cardview.component';
 import { CardProviderService } from './services/card-provider.service';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
+import {DomSanitizer} from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,8 @@ import { CardProviderService } from './services/card-provider.service';
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule
   ],
   providers: [CardProviderService],
   bootstrap: [AppComponent]

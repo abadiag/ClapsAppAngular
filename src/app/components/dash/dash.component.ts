@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { CardProviderService } from 'src/app/services/card-provider.service';
+import { CardType } from '../cardview/cardview.component';
 
 @Component({
   selector: 'app-dash',
@@ -14,7 +15,11 @@ export class DashComponent {
   data: string[] = [];
 
 
-
+  IsText(id: number)
+  {
+    let removedCard = this.cardProvider.getCardById(id);
+    return removedCard?.type == CardType.text;
+  }
   removeCard(id: number) {
     console.log("remove card with id " + id);
     let removedCard = this.cardProvider.getCardById(id)?.title;

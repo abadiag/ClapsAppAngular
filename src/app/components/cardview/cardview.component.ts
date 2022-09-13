@@ -1,26 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { MatCardContent, MatCardModule } from '@angular/material/card';
+import { DomSanitizer } from '@angular/platform-browser';
+import { SecurityContext } from '@angular/core';
 
 @Component({
   selector: 'app-cardview',
   templateUrl: './cardview.component.html',
-  styleUrls: ['./cardview.component.css']
+  styleUrls: ['./cardview.component.css'],
 })
-export class CardviewComponent implements MatCardModule, OnInit {
-
+export class CardviewComponent {
+ 
   id!: number;
   title: string = "Title";
-  content: string = "content";
+  content: string =  "";
 
   colsMax: number = 1;
   rowsMax: number = 1;
   cols: number = 1;
   rows: number = 1;
 
-  constructor() { }
+  type!: CardType;
 
-  ngOnInit(): void {
-  }
+  constructor()
+  { 
+  }  
+}
 
-  
+export enum CardType {
+  text, 
+  graph, 
+  time
 }
