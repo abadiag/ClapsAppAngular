@@ -6,9 +6,6 @@ import { Directive, ElementRef, HostListener, Output, Input, EventEmitter, Injec
 })
 export class FaderDirective implements OnInit {
 
-  // @Output() value = new EventEmitter();
-  // @Input('starting') startingAngle!: number;
-
   private element!: HTMLElement;
 
   private xPosition: number = -10;
@@ -17,13 +14,10 @@ export class FaderDirective implements OnInit {
 
   private isMouseDown: boolean = false;
   private isMouseHover: boolean = false;
-
   private mouseDownPosition!: number;
   private mouseOffset: number = 0;
 
-  constructor(private el: ElementRef
-    // , @Inject(DOCUMENT) private document: any
-  ) { }
+  constructor(private el: ElementRef) { }
 
   @HostListener('mousewheel', ['$event']) onMouse(e: any) {
     e.preventDefault();
