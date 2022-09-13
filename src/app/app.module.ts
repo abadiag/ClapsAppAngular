@@ -3,10 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FaderComponent } from './components/fader/fader.component';
+import { FaderDirective } from './directives/fader.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FaderComponent,
+    FaderDirective
   ],
   imports: [
     BrowserModule,
