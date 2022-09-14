@@ -10,12 +10,15 @@ export class FaderComponent implements OnInit {
 
   @Output() faderValueChanged: EventEmitter<any> = new EventEmitter();
 
+  private xPosition: number = -10;
+  private maxXPosition: number = 60;
+  private minXPosition: number = -300;
+
   public Value: number = 0;
 
-  fadderDrag(ev: CdkDragMove<any>){    
+  fadderDrag(ev: CdkDragMove<any>){
     this.Value = ev.pointerPosition.y + ev.distance.y;
     this.faderValueChanged.emit(this.Value);
-
   }
   constructor() { } 
   ngOnInit(): void {
