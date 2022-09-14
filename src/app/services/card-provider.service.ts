@@ -10,14 +10,14 @@ export class CardProviderService implements OnInit {
     id: 0, title: 'Card 0', cols: 1, rows: 2, colsMax: 1, rowsMax: 2, content: "<p>hello</p>", type: CardType.graph
   };
   private card2: CardviewComponent = {
-    id: 1, title: 'Card 1', cols: 2, rows: 1, colsMax: 2, rowsMax: 1, content: '<mat-spinner></mat-spinner>', type: CardType.sound
+    id: 1, title: 'Card 1', cols: 1, rows: 2, colsMax: 1, rowsMax: 2, content: '<mat-spinner></mat-spinner>', type: CardType.graph
   };
 
   private card3: CardviewComponent = {
-    id: 2, title: 'Card 2', cols: 1, rows: 2, colsMax: 1, rowsMax: 2, content: "Some Text", type: CardType.graph
+    id: 2, title: 'Card 2', cols: 2, rows: 2, colsMax: 2, rowsMax: 2, content: "Some Text", type: CardType.sound
   };
   private card4: CardviewComponent = {
-    id: 3, title: 'Card 3', cols: 1, rows: 1, colsMax: 1, rowsMax: 1, content: "Some Text", type: CardType.sound
+    id: 3, title: 'Card 3', cols: 1, rows: 1, colsMax: 1, rowsMax: 1, content: "Some Text", type: CardType.text
   };
 
   cardsCollection: Array<CardviewComponent> = [];

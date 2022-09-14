@@ -25,6 +25,8 @@ import { CardProviderService } from './services/card-provider.service';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { ChartViewComponent } from './components/chart-view/chart-view.component';
+import { PlayerComponent } from './components/player/player.component';
+import {MatSliderModule} from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { ChartViewComponent } from './components/chart-view/chart-view.component
     FaderDirective,
     DashComponent,
     CardviewComponent,
-    ChartViewComponent
+    ChartViewComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import { ChartViewComponent } from './components/chart-view/chart-view.component
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
     DragDropModule,
-    ChartsModule
+    ChartsModule,
+    MatSliderModule
   ],
   providers: [CardProviderService],
   bootstrap: [AppComponent]

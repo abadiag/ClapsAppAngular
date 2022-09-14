@@ -1,3 +1,4 @@
+import { CdkDrag, CdkDragMove } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,6 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FaderComponent implements OnInit {
 
+  public Value: number = 0;
+
+  fadderDrag(ev: CdkDragMove<any>){    
+    this.Value = ev.pointerPosition.y + ev.distance.y;
+    console.log("dragging " + this.Value);
+  }
   constructor() { } 
   ngOnInit(): void {
   }

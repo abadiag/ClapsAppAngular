@@ -13,6 +13,8 @@ export class ChartViewComponent implements OnInit, OnDestroy {
 
   title: string = "Chart title";
   data: Array<number> = [];
+  endPointApiData: string = "";
+
   lineChartData: ChartDataSets[] = [{ data: this.data, label: this.title },];
   lineChartLabels: Label[] = [];
 
@@ -30,7 +32,6 @@ export class ChartViewComponent implements OnInit, OnDestroy {
       borderColor: 'black',
       backgroundColor: 'rgba(255,255,0,0.28)',
       borderWidth: 1,
-
     },
   ];
 

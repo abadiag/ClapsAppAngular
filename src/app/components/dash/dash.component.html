@@ -10,7 +10,7 @@
   </mat-toolbar>
 
   <!-- card list -->
-  <mat-grid-list cols="2" rowHeight="350px">
+  <mat-grid-list cols="2" rowHeight="280px">
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <mat-card class="dashboard-card">
         <mat-card-header>
@@ -25,14 +25,9 @@
             </mat-menu>
           </mat-card-title>
         </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div class="col" *ngIf="cardProvider.IsText(card.id)">This is a text card</div>
-          <div class="col" *ngIf="cardProvider.IsSound(card.id)">
-            <app-fader>Fader</app-fader>
-            <span>
-              <button class="play-pause-button">PLAY</button>
-            </span>
-          </div>
+        <mat-card-content class="dashboard-card-content">     
+          <div class="mat-card" *ngIf="cardProvider.IsText(card.id)">{{card.content}}</div>
+          <app-player class="mat-card" *ngIf="cardProvider.IsSound(card.id)"></app-player>     
           <app-chart-view class="mat-card" *ngIf="cardProvider.IsChart(card.id)"></app-chart-view>
         </mat-card-content>
       </mat-card>
