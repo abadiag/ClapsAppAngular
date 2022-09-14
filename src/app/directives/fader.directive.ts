@@ -64,7 +64,6 @@ export class FaderDirective implements OnInit {
   }
 
   moveFaderHead(dx: number) {
-
     if (this.xPosition > this.minXPosition - dx && this.xPosition < this.masXPosition - dx) {
       this.xPosition += dx;
       this.element.style.transform =

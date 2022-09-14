@@ -27,6 +27,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import { ChartViewComponent } from './components/chart-view/chart-view.component';
 import { PlayerComponent } from './components/player/player.component';
 import {MatSliderModule} from '@angular/material/slider';
+import { SoundServiceService } from './services/sound-service.service';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,7 @@ import {MatSliderModule} from '@angular/material/slider';
     ChartsModule,
     MatSliderModule
   ],
-  providers: [CardProviderService],
+  providers: [CardProviderService, SoundServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
