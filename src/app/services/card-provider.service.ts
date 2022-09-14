@@ -14,7 +14,7 @@ export class CardProviderService implements OnInit {
   };
 
   private card3: CardviewComponent = {
-    id: 2, title: 'Card 2', cols: 2, rows: 2, colsMax: 2, rowsMax: 2, content: "Some Text", type: CardType.sound
+    id: 2, title: 'Card 2', cols: 1, rows: 2, colsMax: 1, rowsMax: 2, content: "Some Text", type: CardType.sound
   };
   private card4: CardviewComponent = {
     id: 3, title: 'Card 3', cols: 1, rows: 1, colsMax: 1, rowsMax: 1, content: "Some Text", type: CardType.text

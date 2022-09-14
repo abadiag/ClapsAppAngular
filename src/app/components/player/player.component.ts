@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./player.component.css']
 })
 export class PlayerComponent implements OnInit {
-  
+
   state: any;
   currentFile: any = {};
 
@@ -18,11 +18,34 @@ export class PlayerComponent implements OnInit {
   }
 
   constructor() { }
-  play(){}
-  pause(){}
-  next(){}
-  previous(){}
-  onSliderChangeEnd(ev: any){}
+
+  play()
+  { }
+
+  pause()
+  { }
+
+  next()
+  { }
+
+  previous()
+  { }
+
+  onSliderChangeEnd(ev: any) { }
+
+  onFaderChanged(ev: number, name: string) {
+    console.log(ev);
+    switch (name) {
+      case "bass":
+        break;
+      case "mid":
+        break;
+      case "treble":
+        break;
+      case "vol":
+        break;
+    }
+  }
 
   ngOnInit(): void {
   }
