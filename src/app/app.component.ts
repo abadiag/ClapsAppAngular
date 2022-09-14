@@ -8,3 +8,11 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'ClapsApp';
 }
+
+export enum CHART_TYPES
+{
+  Lines,
+  Pie,
+  Bar,
+  Time
+}

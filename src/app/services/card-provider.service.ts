@@ -7,17 +7,17 @@ import { CardType, CardviewComponent } from '../components/cardview/cardview.com
 export class CardProviderService implements OnInit {
 
   private card1: CardviewComponent = {
-    id: 0, title: 'Card 0', cols: 1, rows: 1, colsMax: 1, rowsMax: 1, content: "<p>hello</p>", type: CardType.graph
+    id: 0, title: 'Card 0', cols: 1, rows: 2, colsMax: 1, rowsMax: 2, content: "<p>hello</p>", type: CardType.graph
   };
   private card2: CardviewComponent = {
-    id: 1, title: 'Card 1', cols: 2, rows: 1, colsMax: 2, rowsMax: 1, content: '<mat-spinner></mat-spinner>', type: CardType.text
+    id: 1, title: 'Card 1', cols: 2, rows: 1, colsMax: 2, rowsMax: 1, content: '<mat-spinner></mat-spinner>', type: CardType.sound
   };
 
   private card3: CardviewComponent = {
-    id: 2, title: 'Card 2', cols: 2, rows: 1, colsMax: 2, rowsMax: 1, content: "Some Text", type: CardType.text
+    id: 2, title: 'Card 2', cols: 1, rows: 2, colsMax: 1, rowsMax: 2, content: "Some Text", type: CardType.graph
   };
   private card4: CardviewComponent = {
-    id: 3, title: 'Card 3', cols: 1, rows: 1, colsMax: 1, rowsMax: 1, content: "Some Text", type: CardType.text
+    id: 3, title: 'Card 3', cols: 1, rows: 1, colsMax: 1, rowsMax: 1, content: "Some Text", type: CardType.sound
   };
 
   cardsCollection: Array<CardviewComponent> = [];
@@ -40,6 +40,7 @@ export class CardProviderService implements OnInit {
   removeCard(id: number) {
     let card = this.cardsCollection.find(c => c.id == id);
     if (card) {
+      console.log("remove card with id " + id);
       this.cardsCollection.splice(this.cardsCollection.indexOf(card), 1);
     }
   }
@@ -53,5 +54,20 @@ export class CardProviderService implements OnInit {
 
   getCardById(id: number) {
     return this.cardsCollection.find(c => c.id == id);
+  }
+
+  IsText(id: number) {
+    let removedCard = this.getCardById(id);
+    return removedCard?.type == CardType.text;
+  }
+
+  IsSound(id: number) {
+    let c = this.getCardById(id);
+    return c?.type == CardType.sound;
+  }
+
+  IsChart(id: number) {
+    let c = this.getCardById(id);
+    return c?.type == CardType.graph;
   }
 }

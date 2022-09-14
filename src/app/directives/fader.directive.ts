@@ -24,40 +24,40 @@ export class FaderDirective implements OnInit {
     this.moveFaderHead(e.deltaY / 10);
   }
 
-  @HostListener('mouseleave', ['$event'])
-  onMouseLeave(e: MouseEvent) {
-    this.isMouseHover = false;
-    this.isMouseDown = false;
-    //this.mouseDownPosition = e.clientY;
-  }
+  // @HostListener('mouseleave', ['$event'])
+  // onMouseLeave(e: MouseEvent) {
+  //   this.isMouseHover = false;
+  //   this.isMouseDown = false;
+  //   //this.mouseDownPosition = e.clientY;
+  // }
 
-  @HostListener("mouseover", ['$event']) onMouseHover(e: MouseEvent) {
-    e.preventDefault();
-    this.isMouseHover = true;
-  };
-  @HostListener("mousedown", ['$event']) onMouseDown(e: MouseEvent) {
-    e.preventDefault();
-    this.mouseOffset = 0;
-    this.mouseDownPosition = e.clientY;
-    this.isMouseDown = true;
-    console.log("mouse down");
-  };
+  // @HostListener("mouseover", ['$event']) onMouseHover(e: MouseEvent) {
+  //   e.preventDefault();
+  //   this.isMouseHover = true;
+  // };
+  // @HostListener("mousedown", ['$event']) onMouseDown(e: MouseEvent) {
+  //   e.preventDefault();
+  //   this.mouseOffset = 0;
+  //   this.mouseDownPosition = e.clientY;
+  //   this.isMouseDown = true;
+  //   console.log("mouse down");
+  // };
 
-  @HostListener("mouseup", ['$event']) onMouseUp(e: MouseEvent) {
-    e.preventDefault();
-    this.mouseOffset = 0;
-    this.isMouseDown = false;
-    this.mouseDownPosition = e.clientY;
-    console.log("mouse up");
-  };
-  @HostListener("mousemove", ['$event']) onMouseMove(e: MouseEvent) {
-    e.preventDefault();
-    if (this.isMouseDown && this.isMouseHover) {
-      this.mouseOffset = e.clientY - this.mouseDownPosition;
-      this.moveFaderHead(this.mouseOffset / 80);
-      console.log(this.mouseOffset);
-    }
-  };
+  // @HostListener("mouseup", ['$event']) onMouseUp(e: MouseEvent) {
+  //   e.preventDefault();
+  //   this.mouseOffset = 0;
+  //   this.isMouseDown = false;
+  //   this.mouseDownPosition = e.clientY;
+  //   console.log("mouse up");
+  // };
+  // @HostListener("mousemove", ['$event']) onMouseMove(e: MouseEvent) {
+  //   e.preventDefault();
+  //   if (this.isMouseDown && this.isMouseHover) {
+  //     this.mouseOffset = e.clientY - this.mouseDownPosition;
+  //     this.moveFaderHead(this.mouseOffset / 80);
+  //     console.log(this.mouseOffset);
+  //   }
+  // };
 
   ngOnInit(): void {
     this.element = this.el.nativeElement as HTMLElement;

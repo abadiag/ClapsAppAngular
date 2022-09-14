@@ -1,5 +1,5 @@
 <div class="grid-container">
-
+  <!-- Tool bar definition -->
   <mat-toolbar>
     <span>{{title}}</span>
     <span class="example-spacer"></span>
@@ -9,6 +9,7 @@
     </mat-menu>
   </mat-toolbar>
 
+  <!-- card list -->
   <mat-grid-list cols="2" rowHeight="350px">
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <mat-card class="dashboard-card">
@@ -20,13 +21,19 @@
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
               <button mat-menu-item (click)="expandCard(card.id)">Expand</button>
-              <button mat-menu-item (click)="removeCard(card.id)">Remove</button>
+              <button mat-menu-item (click)="cardProvider.removeCard(card.id)">Remove</button>
             </mat-menu>
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <div class="col" *ngIf="IsText(card.id)">Is text</div>
-          <div [innerHTML]="card.content"></div>
+          <div class="col" *ngIf="cardProvider.IsText(card.id)">This is a text card</div>
+          <div class="col" *ngIf="cardProvider.IsSound(card.id)">
+            <app-fader>Fader</app-fader>
+            <span>
+              <button class="play-pause-button">PLAY</button>
+            </span>
+          </div>
+          <app-chart-view class="mat-card" *ngIf="cardProvider.IsChart(card.id)"></app-chart-view>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

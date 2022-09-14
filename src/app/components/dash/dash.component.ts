@@ -13,21 +13,18 @@ export class DashComponent {
 
   title: string = "DashBoard";
   data: string[] = [];
+  cardProvider: CardProviderService;
 
-
-  IsText(id: number)
-  {
-    let removedCard = this.cardProvider.getCardById(id);
-    return removedCard?.type == CardType.text;
-  }
-  removeCard(id: number) {
-    console.log("remove card with id " + id);
-    let removedCard = this.cardProvider.getCardById(id)?.title;
-    this.cardProvider.removeCard(id);
-    if (removedCard) {
-      this.data.push(removedCard);
-    }
-  }
+  // isPlay = false;
+  // play() {
+  //   this.isPlay = true;
+  //   let audio = new Audio();
+  //   audio.src = "../../../assets/sounds/one_clap.wav";
+  //   audio.load();
+  //   audio.play();
+  //   console.log("play audio");
+  //   this.isPlay = false;
+  // }
 
   expandCard(id: number) {
     console.log("expand card with id " + id);
@@ -47,5 +44,8 @@ export class DashComponent {
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver, private cardProvider: CardProviderService) { }
+  constructor(private breakpointObserver: BreakpointObserver, private _cardProvider: CardProviderService) 
+  {
+    this.cardProvider = _cardProvider;
+   }
 }

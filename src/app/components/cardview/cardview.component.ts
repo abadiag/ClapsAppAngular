@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import { SecurityContext } from '@angular/core';
 
 @Component({
   selector: 'app-cardview',
@@ -28,5 +26,6 @@ export class CardviewComponent {
 export enum CardType {
   text, 
   graph, 
-  time
+  time,
+  sound
 }

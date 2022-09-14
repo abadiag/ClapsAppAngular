@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,8 +23,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { CardviewComponent } from './components/cardview/cardview.component';
 import { CardProviderService } from './services/card-provider.service';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
-import {DomSanitizer} from '@angular/platform-browser';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { ChartViewComponent } from './components/chart-view/chart-view.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {DomSanitizer} from '@angular/platform-browser';
     FaderComponent,
     FaderDirective,
     DashComponent,
-    CardviewComponent
+    CardviewComponent,
+    ChartViewComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,9 @@ import {DomSanitizer} from '@angular/platform-browser';
     MatCardModule,
     MatMenuModule,
     BrowserAnimationsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    DragDropModule,
+    ChartsModule
   ],
   providers: [CardProviderService],
   bootstrap: [AppComponent]
