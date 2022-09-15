@@ -1,5 +1,5 @@
 import { CdkDragMove } from '@angular/cdk/drag-drop';
-import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-slider',
@@ -16,6 +16,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
   private minYPosition: number = 0;
   private stepY: number = 0;
 
+  @Input() f_name: string = "";
   public Value: number = 1;
 
   constructor(private el: ElementRef) { }
@@ -27,19 +28,14 @@ export class SliderComponent implements OnInit, AfterViewInit {
   }
 
   fadderDrag(ev: CdkDragMove<any>) {
-    if(this.Value >= this.minYPosition && this.Value <= this.maxYPosition)
-    {
-    this.Value = this.Value + ev.delta.y * this.stepY;
-    this.Value = this.Value > this.maxYPosition? this.maxYPosition: this.Value;
-    this.Value = this.Value < this.minYPosition? this.minYPosition: this.Value;
-    
-    console.log(this.Value);
-    this.faderValueChanged.emit(this.Value);
-  }
-
+    if (this.Value >= this.minYPosition && this.Value <= this.maxYPosition) {
+      this.Value = this.Value + ev.delta.y * this.stepY;
+      this.Value = this.Value > this.maxYPosition ? this.maxYPosition : this.Value;
+      this.Value = this.Value < this.minYPosition ? this.minYPosition : this.Value;
+      this.faderValueChanged.emit(this.Value);
+    }
   }
 
   ngOnInit(): void {
   }
-
 }

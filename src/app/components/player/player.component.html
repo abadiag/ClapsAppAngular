@@ -1,24 +1,16 @@
 <div>
     <div class="container">
         <div class="col-1">
-            <app-fader (faderValueChanged)="onFaderChanged($event, 'bass')"></app-fader>
-            <p class="fader-text">Bass</p>
+            <app-slider (faderValueChanged)="onFaderChanged($event, 'Bass')" f_name="Bass"></app-slider>
         </div>
         <div class="col-2">
-            <app-fader (faderValueChanged)="onFaderChanged($event, 'mid')"></app-fader>
-            <p class="fader-text">Mid</p>
+            <app-slider (faderValueChanged)="onFaderChanged($event, 'Mid')"  f_name="Mid"></app-slider>
         </div>
         <div class="col-3">
-            <app-fader (faderValueChanged)="onFaderChanged($event, 'treble')"></app-fader>
-            <p class="fader-text">Treble</p>
+            <app-slider (faderValueChanged)="onFaderChanged($event, 'Tre')"  f_name="Tre"></app-slider>
         </div>
         <div class="col-4">
-            <app-fader (faderValueChanged)="onFaderChanged($event, 'vol')"></app-fader>
-            <p class="fader-text">Vol</p>
-        </div>
-        <div class="col-4">
-            <app-slider></app-slider>
-          
+            <app-slider (faderValueChanged)="onFaderChanged($event, 'vol')"  f_name="Vol"></app-slider>
         </div>
     </div>
     <div class="media-footer">

@@ -1,11 +1,10 @@
 .example-box {
     width: 30px;
     cursor: move;
-    display: inline-flex;
+
     justify-content: center;
     align-items: center;
-    text-align: center;
-    background: rgba(255, 255, 255, 0);
+    align-self: stretch;
     border-radius: 1px;
     margin-right: 1px;
     position: relative;
@@ -23,11 +22,13 @@
 }
 
 .fader-boundary {
-    height: 240px;
+    height: 320px;
     width: 100%;
-    align-items: center;
-    background-size: 40px;
     background-image: url('..\..\..\assets\img\back_fader.jpg');
     background-size: cover;
+    margin: 15px;
+}
 
+.container {
+    text-align: center;
 }

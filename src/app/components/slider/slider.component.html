@@ -1,4 +1,7 @@
-<div class="fader-boundary" #fader_back>
-    <img class="example-box" cdkDragBoundary=".fader-boundary" cdkDragLockAxis="y" cdkDrag
-        (cdkDragMoved)="fadderDrag($event)" src="..\..\..\assets\img\fader_knob_unshadow.png">
+<div class="container">
+    <div class="fader-boundary" #fader_back>
+        <img class="example-box" cdkDragBoundary=".fader-boundary" cdkDragLockAxis="y" cdkDrag
+            (cdkDragMoved)="fadderDrag($event)" src="..\..\..\assets\img\fader_knob_unshadow.png">
+    </div>
+    <div>{{f_name}}</div>
 </div>

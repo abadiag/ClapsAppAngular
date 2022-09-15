@@ -67,7 +67,7 @@ export class PlayerComponent implements OnInit {
       case "treble":
         break;
       case "vol":
-        this.soundPlayer.player.volume = 0.1;
+        this.soundPlayer.player.volume = Math.min(Math.max((1/ev), 0), 1);
         break;
     }
   }
