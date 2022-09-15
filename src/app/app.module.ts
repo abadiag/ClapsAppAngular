@@ -29,6 +29,10 @@ import { PlayerComponent } from './components/player/player.component';
 import {MatSliderModule} from '@angular/material/slider';
 import { SoundServiceService } from './services/sound-service.service';
 import { SliderComponent } from './components/slider/slider.component';
+import { CamComponent } from './components/cam/cam.component';
+import { ThreeSceneComponent } from './components/three-scene/three-scene.component';
+import { JoystickComponent } from './components/joystick/joystick.component';
+import { OverlayModule } from "@angular/cdk/overlay";
 
 @NgModule({
   declarations: [
@@ -39,7 +43,10 @@ import { SliderComponent } from './components/slider/slider.component';
     CardviewComponent,
     ChartViewComponent,
     PlayerComponent,
-    SliderComponent
+    SliderComponent,
+    CamComponent,
+    ThreeSceneComponent,
+    JoystickComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +64,8 @@ import { SliderComponent } from './components/slider/slider.component';
     MatProgressSpinnerModule,
     DragDropModule,
     ChartsModule,
-    MatSliderModule
+    MatSliderModule,
+    OverlayModule
   ],
   providers: [CardProviderService, SoundServiceService],
   bootstrap: [AppComponent]
