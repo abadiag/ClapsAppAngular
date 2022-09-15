@@ -28,6 +28,7 @@ import { ChartViewComponent } from './components/chart-view/chart-view.component
 import { PlayerComponent } from './components/player/player.component';
 import {MatSliderModule} from '@angular/material/slider';
 import { SoundServiceService } from './services/sound-service.service';
+import { SliderComponent } from './components/slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { SoundServiceService } from './services/sound-service.service';
     DashComponent,
     CardviewComponent,
     ChartViewComponent,
-    PlayerComponent
+    PlayerComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,
