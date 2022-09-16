@@ -1,17 +1,19 @@
 @import '~@angular/cdk/overlay-prebuilt.css';
 
-#container {
-    position: relative;
-  }
-  
-  #joy {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 10px;
-  }
-  #joy {
-    z-index: 10;
-  }
+#scenecontainer {
+  position: relative;
+  min-height: 320px;
+}
+
+#joy {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 10px;
+}
+
+#joy {
+  z-index: 10;
+}

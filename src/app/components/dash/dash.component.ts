@@ -15,17 +15,6 @@ export class DashComponent {
   data: string[] = [];
   cardProvider: CardProviderService;
 
-  // isPlay = false;
-  // play() {
-  //   this.isPlay = true;
-  //   let audio = new Audio();
-  //   audio.src = "../../../assets/sounds/one_clap.wav";
-  //   audio.load();
-  //   audio.play();
-  //   console.log("play audio");
-  //   this.isPlay = false;
-  // }
-
   expandCard(id: number) {
     console.log("expand card with id " + id);
   }
