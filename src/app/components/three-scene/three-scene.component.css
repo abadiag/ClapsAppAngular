@@ -1,9 +1,9 @@
 @import '~@angular/cdk/overlay-prebuilt.css';
 
 #scenecontainer {
-  position: relative;
   min-height: 1500px;
-  min-width: 1600px;
+  min-width: 1700px;
+  align-self: right;
 }
 
 #joy {
@@ -12,9 +12,9 @@
   position: absolute;
   top: 0;
   left: 0;
-  margin: 40px;
+  margin: 20px;
 }
 
 #joy {
-  z-index: 10;
+  z-index: 1;
 }

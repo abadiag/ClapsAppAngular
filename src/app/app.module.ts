@@ -33,6 +33,8 @@ import { CamComponent } from './components/cam/cam.component';
 import { ThreeSceneComponent } from './components/three-scene/three-scene.component';
 import { JoystickComponent } from './components/joystick/joystick.component';
 import { OverlayModule } from "@angular/cdk/overlay";
+import { JoyComponent } from './components/joy/joy.component';
+import { JoyWrappedComponent } from './components/joy-wrapped/joy-wrapped.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { OverlayModule } from "@angular/cdk/overlay";
     SliderComponent,
     CamComponent,
     ThreeSceneComponent,
-    JoystickComponent
+    JoystickComponent,
+    JoyComponent,
+    JoyWrappedComponent
   ],
   imports: [
     BrowserModule,

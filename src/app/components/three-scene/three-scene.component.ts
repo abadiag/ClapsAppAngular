@@ -5,8 +5,14 @@ import {
   Color,
   DirectionalLight,
   HemisphereLight,
+  Mesh,
+  MeshStandardMaterial,
+  Object3D,
   PerspectiveCamera,
+  PlaneGeometry,
+  RepeatWrapping,
   Scene,
+  TextureLoader,
   Vector3,
   WebGLRenderer,
 } from 'three';
@@ -17,6 +23,7 @@ import {
 } from 'three/examples/jsm/loaders/GLTFLoader';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { JoystickOutputData } from 'nipplejs';
 
 @Component({
   selector: 'app-three-scene',
@@ -42,6 +49,8 @@ export class ThreeSceneComponent implements AfterViewInit {
   hemisphere!: HemisphereLight;
   mainLight!: DirectionalLight;
 
+  plane!: PlaneGeometry;
+
   directionalLightOptions = {
     color: 0xffffff,
     intensity: 5
@@ -53,26 +62,18 @@ export class ThreeSceneComponent implements AfterViewInit {
     intensity: 5
   };
 
-  joyEvent(ev: any) {
-    console.log(ev);
-    switch (ev) {
-      case 'UP':
-        this.camera.translateZ(-0.1);
-        break;
-      case 'DOWN':
-        this.camera.translateZ(0.1);
-        break;
-      case 'LEFT':
-        this.camera.translateX(-0.1);
-        break;
-      case 'RIGHT':
-        this.camera.translateX(0.1);
-        break;
-      case 'CENTER':
-        this.camera.translateY(0.1);
-        break;
-    }
+  joyMove(ev: JoystickOutputData) {
 
+    const cameraOffset = new Vector3(0, 4, 10);
+    this.car.translateX(-ev.vector.x);
+    this.car.translateY(-ev.vector.y);
+
+    const objectPosition = new Vector3();
+    this.car.getWorldPosition(objectPosition);
+    this.camera.position.copy(objectPosition).add(cameraOffset);
+
+    console.log("cam X:" + this.camera.position.x + " Y:" + this.camera.position.y + " Z:" + this.camera.position.z);
+    console.log("cam rotation X:" + this.camera.rotation.x + " Y:" + this.camera.rotation.y + " Z:" + this.camera.rotation.z);
     this.render;
   }
 
@@ -90,8 +91,9 @@ export class ThreeSceneComponent implements AfterViewInit {
     this.createCamera();
     this.createControls();
     this.createLight();
-    //this.createModels();
+    this.createModels();
     this.addCarModel();
+    this.initGround();
     this.createRenderer();
     this.start();
   }
@@ -103,7 +105,10 @@ export class ThreeSceneComponent implements AfterViewInit {
       this.near,
       this.far
     );
-    this.camera.position.set(-1.5, 1.5, 6.5);
+
+    this.camera.position.set(0, 4, 10);
+    this.camera.rotateX(5);
+    console.log("cam positioned");
   }
   // CONTROLS
   private createControls = () => this.controls = new OrbitControls(this.camera, this.container.nativeElement);
@@ -121,8 +126,8 @@ export class ThreeSceneComponent implements AfterViewInit {
       this.directionalLightOptions.color,
       this.directionalLightOptions.intensity
     );
-    this.mainLight.position.set(10, 10, 10);
 
+    this.mainLight.position.set(10, 10, 10);
     this.scene.add(this.hemisphere, this.mainLight);
   }
 
@@ -133,12 +138,6 @@ export class ThreeSceneComponent implements AfterViewInit {
   }
 
   private createRenderer = () => {
-
-    if (this.container != null) {
-      console.log("W:" + this.container.nativeElement.clientWidth);
-      console.log("H:" + this.container.nativeElement.clientHeight);
-    }
-
     this.renderer.setSize(this.container.nativeElement.clientWidth, this.container.nativeElement.clientHeight);
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.physicallyCorrectLights = true;
@@ -160,7 +159,7 @@ export class ThreeSceneComponent implements AfterViewInit {
 
   private render = () => this.renderer.render(this.scene, this.camera);
 
-  carPosition = new Vector3(0, 0, -40);
+  carPosition = new Vector3(0, 0, 0);
   carUrl = '../../../assets/models/glb/lotus_exige_240.glb';
   flamingoPosition = new Vector3(4, 0, -10);
   flamingoUrl = '../../../assets/models/glb/Flamingo.glb';
@@ -169,12 +168,15 @@ export class ThreeSceneComponent implements AfterViewInit {
   storkPosition = new Vector3(0, -2.5, -10);
   storkUrl = '../../../assets/models/glb/Stork.glb'
 
+  car!: Object3D;
 
   private addCarModel = () => {
     const loadModel = (gltf: GLTF, position: Vector3) => {
       const model = gltf.scene.children[0];
       model.position.copy(position);
       model.scale.set(1, 1, 1);
+      model.rotateZ(3.15);
+      this.car = model;
       this.scene.add(model);
     }
 
@@ -190,7 +192,7 @@ export class ThreeSceneComponent implements AfterViewInit {
     const loadModel = (gltf: GLTF, position: Vector3) => {
       const model = gltf.scene.children[0];
       model.position.copy(position);
-      model.scale.set(0.09, 0.09, 0.09);
+      model.scale.set(0.01, 0.01, 0.01);
       const animation = gltf.animations[0];
       const mixer = new AnimationMixer(model);
       this.mixers.push(mixer);
@@ -219,5 +221,19 @@ export class ThreeSceneComponent implements AfterViewInit {
       () => { },
       err => console.log(err)
     );
+  }
+
+  initGround(){
+    this.plane = new PlaneGeometry(1000, 1000, 2000, 2000);
+    let disMap = new TextureLoader().setPath('../../../assets/textures/').load('terrain_heightmap.png');
+    disMap.wrapS = disMap.wrapT = RepeatWrapping;
+    disMap.repeat.set(2, 2);
+
+    const groundMat = new MeshStandardMaterial({color: 0x000000, wireframe: true, displacementMap: disMap, displacementScale: 1});
+    let groundMesh = new Mesh(this.plane, groundMat);
+    this.scene.add(groundMesh);
+
+    groundMesh.rotation.x = -Math.PI / 2;
+    groundMesh.position.y = -0.5;
   }
 }
