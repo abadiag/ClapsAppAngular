@@ -3,6 +3,7 @@ import {
   AnimationMixer,
   Clock,
   Color,
+  DataTextureLoader,
   DirectionalLight,
   HemisphereLight,
   Mesh,
@@ -226,6 +227,7 @@ export class ThreeSceneComponent implements AfterViewInit {
   initGround(){
     this.plane = new PlaneGeometry(1000, 1000, 2000, 2000);
     let disMap = new TextureLoader().setPath('../../../assets/textures/').load('terrain_heightmap.png');
+    new DataTextureLoader().load()
     disMap.wrapS = disMap.wrapT = RepeatWrapping;
     disMap.repeat.set(2, 2);
 
