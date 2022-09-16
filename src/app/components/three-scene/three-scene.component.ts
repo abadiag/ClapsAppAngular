@@ -22,10 +22,13 @@ export class ThreeSceneComponent implements AfterViewInit {
   aspect!: number;
   near = 1; // the near clipping plane
   far = 150; // the far clipping plane
+
   // create a Scene
   scene: Scene = new Scene();
+
   // geometry
   geometry = new BoxGeometry(2, 2, 2);
+
   // Cam
   camera!: PerspectiveCamera;
   material = new MeshBasicMaterial({color: 0x0fff0f});
@@ -37,29 +40,25 @@ export class ThreeSceneComponent implements AfterViewInit {
     private renderer2: Renderer2,
     @Inject(DOCUMENT) private document: Document) {}
 
-
     joyEvent(ev: any)
     {
       console.log(ev);
       switch (ev) {
         case 'UP':
-          this.cube.rotateX(0.1);
+          this.camera.translateZ(-0.05);
           break;
         case 'DOWN': 
-        this.cube.rotateX(-0.1);
+        this.camera.translateZ(0.05);
           break;
         case 'LEFT': 
-        this.cube.rotateY(0.1);
+        this.camera.translateX(-0.05);
           break;
         case 'RIGHT':
-          this.cube.rotateY(-0.1);
+          this.camera.translateX(0.05);
           break;
         case 'CENTER': 
-        this.cube.rotateZ(0.1);
+        this.camera.translateY(0.01);
           break; 
-        case 'ALERT':
-           
-          break;
       }   
 
       this.renderer.render(this.scene, this.camera);
