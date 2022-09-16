@@ -2,10 +2,8 @@
 
 #scenecontainer {
   position: relative;
-  min-height: 320px;
-  min-width: 400px;
-  height: auto;
-  width: auto;
+  min-height: 1500px;
+  min-width: 1600px;
 }
 
 #joy {

@@ -25,9 +25,9 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 })
 export class ThreeSceneComponent implements AfterViewInit {
 
-  @ViewChild('scenecontainer') container! : ElementRef;
- 
-  loader!: GLTFLoader;
+  @ViewChild('scenecontainer') container!: ElementRef;
+
+  loader: GLTFLoader = new GLTFLoader();
   fov = 35; // AKA Field of View
   aspect!: number;
   near = 1; // the near clipping plane
@@ -90,7 +90,8 @@ export class ThreeSceneComponent implements AfterViewInit {
     this.createCamera();
     this.createControls();
     this.createLight();
-    this.createModels();
+    //this.createModels();
+    this.addCarModel();
     this.createRenderer();
     this.start();
   }
@@ -135,7 +136,7 @@ export class ThreeSceneComponent implements AfterViewInit {
 
     if (this.container != null) {
       console.log("W:" + this.container.nativeElement.clientWidth);
-      console.log("H:" + this.container.nativeElement.clientHeight);  
+      console.log("H:" + this.container.nativeElement.clientHeight);
     }
 
     this.renderer.setSize(this.container.nativeElement.clientWidth, this.container.nativeElement.clientHeight);
@@ -162,19 +163,37 @@ export class ThreeSceneComponent implements AfterViewInit {
 
   private render = () => this.renderer.render(this.scene, this.camera);
 
-  flamingoPosition = new Vector3(7.5, 0, -10);
-  flamingoUrl = 'https://rawcdn.githack.com/mrdoob/three.js/7249d12dac2907dac95d36227d62c5415af51845/examples/models/gltf/Flamingo.glb';
+  carPosition = new Vector3(0, 0, -40);
+  carUrl = '../../../assets/models/glb/lotus_exige_240.glb';
+  flamingoPosition = new Vector3(4, 0, -10);
+  flamingoUrl = '../../../assets/models/glb/Flamingo.glb';
   parrotPosition = new Vector3(0, 0, 2.5);
-  parrotUrl = 'https://rawcdn.githack.com/mrdoob/three.js/7249d12dac2907dac95d36227d62c5415af51845/examples/models/gltf/Parrot.glb';
+  parrotUrl = '../../../assets/models/glb/Parrot.glb';
   storkPosition = new Vector3(0, -2.5, -10);
-  storkUrl = 'https://rawcdn.githack.com/mrdoob/three.js/7249d12dac2907dac95d36227d62c5415af51845/examples/models/gltf/Stork.glb'
+  storkUrl = '../../../assets/models/glb/Stork.glb'
 
-  private createModels = () => {
-    this.loader = new GLTFLoader();
+
+  private addCarModel = () => {
     const loadModel = (gltf: GLTF, position: Vector3) => {
       const model = gltf.scene.children[0];
       model.position.copy(position);
-      model.scale.set(0.02, 0.02, 0.02);
+      model.scale.set(1, 1, 1);
+      this.scene.add(model);
+    }
+
+    this.loader.load(
+      this.carUrl,
+      gltf => loadModel(gltf, this.carPosition),
+      () => { },
+      err => console.log(err)
+    );
+  }
+
+  private createModels = () => {
+    const loadModel = (gltf: GLTF, position: Vector3) => {
+      const model = gltf.scene.children[0];
+      model.position.copy(position);
+      model.scale.set(0.09, 0.09, 0.09);
 
       const animation = gltf.animations[0];
 
