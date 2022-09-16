@@ -27,5 +27,6 @@ export enum CardType {
   text, 
   graph, 
   time,
-  sound
+  sound,
+  three
 }

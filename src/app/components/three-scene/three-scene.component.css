@@ -3,6 +3,9 @@
 #scenecontainer {
   position: relative;
   min-height: 320px;
+  min-width: 400px;
+  height: auto;
+  width: auto;
 }
 
 #joy {
@@ -11,7 +14,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  margin: 10px;
+  margin: 40px;
 }
 
 #joy {

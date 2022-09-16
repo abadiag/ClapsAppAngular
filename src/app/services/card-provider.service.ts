@@ -10,7 +10,7 @@ export class CardProviderService implements OnInit {
     id: 0, title: 'Card 0', cols: 1, rows: 2, colsMax: 1, rowsMax: 2, content: "<p>hello</p>", type: CardType.graph
   };
   private card2: CardviewComponent = {
-    id: 1, title: 'Card 1', cols: 1, rows: 2, colsMax: 1, rowsMax: 2, content: '<mat-spinner></mat-spinner>', type: CardType.graph
+    id: 1, title: 'Card 1', cols: 1, rows: 2, colsMax: 1, rowsMax: 2, content: '<mat-spinner></mat-spinner>', type: CardType.three
   };
 
   private card3: CardviewComponent = {
@@ -70,4 +70,9 @@ export class CardProviderService implements OnInit {
     let c = this.getCardById(id);
     return c?.type == CardType.graph;
   }
+  IsThree(id: number) {
+    let c = this.getCardById(id);
+    return c?.type == CardType.three;
+  }
+  
 }

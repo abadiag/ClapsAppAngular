@@ -28,9 +28,9 @@
         <mat-card-content class="dashboard-card-content">    
 
           <div class="mat-card" *ngIf="cardProvider.IsText(card.id)">{{card.content}}</div>
-          <app-cam></app-cam>
           <app-player class="mat-card" *ngIf="cardProvider.IsSound(card.id)"></app-player>     
           <app-chart-view class="mat-card" *ngIf="cardProvider.IsChart(card.id)"></app-chart-view>
+          <app-three-scene class="mat-card" *ngIf="cardProvider.IsThree(card.id)"></app-three-scene>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
