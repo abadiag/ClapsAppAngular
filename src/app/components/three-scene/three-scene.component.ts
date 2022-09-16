@@ -57,19 +57,19 @@ export class ThreeSceneComponent implements AfterViewInit {
     console.log(ev);
     switch (ev) {
       case 'UP':
-        this.camera.translateZ(-0.05);
+        this.camera.translateZ(-0.1);
         break;
       case 'DOWN':
-        this.camera.translateZ(0.05);
+        this.camera.translateZ(0.1);
         break;
       case 'LEFT':
-        this.camera.translateX(-0.05);
+        this.camera.translateX(-0.1);
         break;
       case 'RIGHT':
-        this.camera.translateX(0.05);
+        this.camera.translateX(0.1);
         break;
       case 'CENTER':
-        this.camera.translateY(0.01);
+        this.camera.translateY(0.1);
         break;
     }
 
@@ -141,9 +141,6 @@ export class ThreeSceneComponent implements AfterViewInit {
 
     this.renderer.setSize(this.container.nativeElement.clientWidth, this.container.nativeElement.clientHeight);
     this.renderer.setPixelRatio(window.devicePixelRatio);
-
-    //this.renderer.gammaFactor = this.gammaFactor;
-    //this.renderer.gammaOutput = true;
     this.renderer.physicallyCorrectLights = true;
     this.container.nativeElement.appendChild(this.renderer.domElement);
     window.addEventListener('resize', this.onWindowResize);
@@ -194,15 +191,11 @@ export class ThreeSceneComponent implements AfterViewInit {
       const model = gltf.scene.children[0];
       model.position.copy(position);
       model.scale.set(0.09, 0.09, 0.09);
-
       const animation = gltf.animations[0];
-
       const mixer = new AnimationMixer(model);
       this.mixers.push(mixer);
-
       const action = mixer.clipAction(animation);
       action.play();
-
       this.scene.add(model);
     }
 
